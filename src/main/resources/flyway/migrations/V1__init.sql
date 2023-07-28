@@ -8,11 +8,10 @@ CREATE TABLE user
     PRIMARY KEY (id)
 );
 
-CREATE TABLE user_role
+CREATE TABLE user_roles
 (
     user_id INT NOT NULL,
-    role    VARCHAR(45) DEFAULT NULL,
-    PRIMARY KEY (user_id),
+    roles    VARCHAR(45) NOT NULL,
     CONSTRAINT user_id
         FOREIGN KEY (user_id) REFERENCES user (id)
 );
