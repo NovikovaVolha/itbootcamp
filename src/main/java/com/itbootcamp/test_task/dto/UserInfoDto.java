@@ -1,6 +1,7 @@
 package com.itbootcamp.test_task.dto;
 
 import com.itbootcamp.test_task.dto.enums.RoleDto;
+import com.itbootcamp.test_task.model.entity.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,6 @@ public class UserInfoDto {
 
     private String fio;
     private String email;
-    private List<RoleDto> roles;
+    private List<Role> roles;
 
 }
