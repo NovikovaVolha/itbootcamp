@@ -1,5 +1,6 @@
 package com.itbootcamp.test_task.exception;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -14,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
+@Log4j2
 public class ValidationHandler extends ResponseEntityExceptionHandler {
-
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -25,6 +26,8 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });
+        log.error("MethodArgumentNotValidException with errors: " + errors);
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+
 }
